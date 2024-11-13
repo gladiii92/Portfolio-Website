@@ -5,12 +5,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #696969; /* DimGray background for the entire page */
+    background-color: #696969 !important; /* Force DimGray background for the entire page */
     color: #f4f4f9; /* Light text for readability */
+    height: 100vh; /* Ensure full viewport height */
+}
+
+html {
+    height: 100%; /* Ensure full height for the HTML element */
 }
 
 header {
-    background-color: #333333; /* Dark background for header */
+    background-color: #333333 !important; /* Dark background for header */
     color: #f4f4f9; /* Light text for the header */
     text-align: center;
     padding: 20px;
@@ -23,7 +28,7 @@ h1 {
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #555555; /* Dark background for sections (no white here) */
+    background-color: #555555 !important; /* Dark background for sections (no white here) */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
@@ -51,14 +56,18 @@ section {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #333333; /* Dark background for footer */
+    background-color: #333333 !important; /* Dark background for footer */
     color: #f4f4f9; /* Light text for footer */
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-/* Responsive design for smaller screens */
+/* Fullscreen background */
+* {
+    box-sizing: border-box;
+}
+
 @media screen and (max-width: 768px) {
     body {
         font-size: 16px; /* Adjust font size for smaller screens */
