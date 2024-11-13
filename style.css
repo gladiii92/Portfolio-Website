@@ -1,48 +1,55 @@
+/* Basic Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f9;
 }
+
 header {
-    background-color: #333;
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 0;
     text-align: center;
+    padding: 20px;
 }
+
+h1 {
+    margin: 0;
+}
+
 section {
+    margin: 20px;
     padding: 20px;
-}
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
-#projects {
-    padding: 20px;
-    background-color: #f9f9f9;
-}
-
-.project {
     background-color: white;
-    border: 1px solid #ddd;
-    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#projects .project {
     margin-bottom: 20px;
 }
 
-.project h3 {
+#projects h3 {
     margin-top: 0;
 }
 
-.project a {
-    color: #333;
+#projects a {
+    color: #4CAF50;
     text-decoration: none;
     font-weight: bold;
 }
 
-.project a:hover {
-    color: #007bff;
+#projects a:hover {
+    text-decoration: underline;
 }
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
