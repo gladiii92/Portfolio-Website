@@ -23,7 +23,7 @@ h1 {
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #ffffff; /* White background for sections */
+    background-color: #696969; /* White background for sections */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
