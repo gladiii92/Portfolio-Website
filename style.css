@@ -1,84 +1,90 @@
 <link rel="stylesheet" href="style.css">
 
-/* Basic Styling */
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #696969 !important; /* Force DimGray background for the entire page */
-    color: #f4f4f9; /* Light text for readability */
-    height: 100vh; /* Ensure full viewport height */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: #f2f2f2;
 }
 
-html {
-    height: 100%; /* Ensure full height for the HTML element */
-}
-
+/* Header Styles */
 header {
-    background-color: #333333 !important; /* Dark background for header */
-    color: #f4f4f9; /* Light text for the header */
-    text-align: center;
-    padding: 20px;
+  background-color: #333;
+  padding: 20px;
+  text-align: center;
 }
 
-h1 {
-    margin: 0;
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #ccc;
+}
+
+/* Main Content Styles */
+main {
+  padding: 40px;
 }
 
 section {
-    margin: 20px;
-    padding: 20px;
-    background-color: #555555 !important; /* Dark background for sections (no white here) */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  margin-bottom: 40px;
 }
 
-#projects .project {
-    margin-bottom: 20px;
+h1, h2, h3 {
+  color: #BDB76B;
 }
 
-#projects h3 {
-    margin-top: 0;
-    color: #f4f4f9; /* Light color for project titles */
+p {
+  line-height: 1.6;
 }
 
-#projects a {
-    color: #BDB76B; /* DarkKhaki color for links */
-    text-decoration: none;
-    font-weight: bold;
+/* Project Styles */
+.project {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#projects a:hover {
-    text-decoration: underline;
-    color: #DAA520; /* Goldenrod color on hover */
+.project h3 {
+  margin-top: 0;
 }
 
+.project p {
+  margin-bottom: 20px;
+}
+
+.project a {
+  color: #BDB76B;
+  text-decoration: none;
+}
+
+.project a:hover {
+  color: #DAA520;
+}
+
+/* Footer Styles */
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333333 !important; /* Dark background for footer */
-    color: #f4f4f9; /* Light text for footer */
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Fullscreen background */
-* {
-    box-sizing: border-box;
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 16px; /* Adjust font size for smaller screens */
-    }
-
-    section {
-        margin: 10px;
-        padding: 15px;
-    }
-
-    footer {
-        padding: 8px;
-    }
+  background-color: #333;
+  padding: 20px;
+  text-align: center;
+  color: #f2f2f2;
+  font-size: 14px;
 }
