@@ -3,13 +3,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1c1c1c; /* Darker background for the whole page */
+    background-color: #121212; /* Dark theme background */
     color: #f4f4f9; /* Light text color for readability */
 }
 
 header {
-    background-color: #121212; /* Even darker header */
-    color: #f4f4f9;
+    background-color: #1a1a1a; /* Slightly lighter dark header */
+    color: #f4f4f9; /* White text for the header */
     text-align: center;
     padding: 20px;
 }
@@ -21,9 +21,9 @@ h1 {
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #333; /* Dark gray background for sections */
+    background-color: #1f1f1f; /* Dark background for sections */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
 }
 
 #projects .project {
@@ -32,11 +32,11 @@ section {
 
 #projects h3 {
     margin-top: 0;
-    color: #f4f4f9; /* Light title text color */
+    color: #f4f4f9; /* Light color for project titles */
 }
 
 #projects a {
-    color: #121212; /* Black color for project links (same as footer) */
+    color: #121212; /* Black color for links */
     text-decoration: none;
     font-weight: bold;
 }
@@ -48,17 +48,17 @@ section {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #121212; /* Dark footer background */
-    color: #f4f4f9;
+    background-color: #1a1a1a; /* Footer with the same dark color as header */
+    color: #f4f4f9; /* Light text for footer */
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-/* Add responsive design for smaller screens */
+/* Responsive design for smaller screens */
 @media screen and (max-width: 768px) {
     body {
-        font-size: 16px; /* Slightly smaller font on mobile */
+        font-size: 16px; /* Adjust font size for smaller screens */
     }
 
     section {
