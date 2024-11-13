@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0e0e0; /* Light gray background for a softer, non-shiny look */
+    background-color: #696969; /* Light gray background for a softer, non-shiny look */
     color: #333; /* Dark text for readability */
 }
 
@@ -23,7 +23,7 @@ h1 {
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #696969; /* White background for sections */
+    background-color: #696969;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
@@ -45,7 +45,7 @@ section {
 
 #projects a:hover {
     text-decoration: underline;
-    color: #3498db; /* Slightly brighter blue on hover */
+    color: #BDB76B; /* Slightly brighter blue on hover */
 }
 
 footer {
