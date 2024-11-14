@@ -30,7 +30,10 @@
       <div class="project">
         <h3>Password Generator</h3>
         <p>This is my first project, a simple password generator that creates secure, random passwords.</p>
-        <a href="https://gladiii92.github.io/Password-Generator/">Password Generator</a>
+        <div class="password-generator">
+          <input type="text" id="password-input" readonly>
+          <button onclick="generatePassword()">Generate Password</button>
+        </div>
       </div>
       <!-- Add more project sections as needed -->
     </section>
@@ -40,5 +43,16 @@
     <p>&copy; 2024 David Heinke. All rights reserved.</p>
     <p>Contact: David_Heinke@gmx.de</p>
   </footer>
+
+  <script>
+    function generatePassword() {
+      const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
+      let password = "";
+      for (let i = 0; i < 16; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+      }
+      document.getElementById("password-input").value = password;
+    }
+  </script>
 </body>
 </html>
