@@ -3,46 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Heinke - Portfolio</title>
+  <title>David Heinke's Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="home">
+    <section>
       <h1>Welcome to My Portfolio</h1>
       <p>Hello! My name is David Heinke, and I am a 32-year-old aspiring quant trader from Germany. I started learning to code a few months ago, and I'm excited to pursue a career in this field.</p>
       <p>I have already programmed some algorithms with the help of a programmer friend, and I plan to publish these projects on my portfolio website soon. As I continue to learn and grow, my goal is to create my own profitable trading algorithms.</p>
     </section>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Provide information about yourself and your background here.</p>
-    </section>
-
-    <section id="projects">
+    <section>
       <h2>My Projects</h2>
       <div class="project">
-        <h3><a href="https://gladiii92.github.io/Password-Generator/">Password Generator</a></h3>
+        <h3>Password Generator</h3>
         <p>This is my first project, a simple password generator that creates secure, random passwords.</p>
-        <a href="https://gladiii92.github.io/Password-Generator/">Generate Password</a>
+        <div class="password-generator">
+          <input type="text" id="password-input" readonly>
+          <button onclick="generatePassword()">Generate Password</button>
+        </div>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>Provide your contact information here.</p>
+      <!-- Add more project sections as needed -->
     </section>
   </main>
 
@@ -50,5 +43,16 @@
     <p>&copy; 2024 David Heinke. All rights reserved.</p>
     <p>Contact: David_Heinke@gmx.de</p>
   </footer>
+
+  <script>
+    function generatePassword() {
+      const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
+      let password = "";
+      for (let i = 0; i < 16; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+      }
+      document.getElementById("password-input").value = password;
+    }
+  </script>
 </body>
 </html>
