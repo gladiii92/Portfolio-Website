@@ -19,6 +19,7 @@
       --accent: #382414;
       --glow: #fffbe6;
       --shadow: 0 4px 32px 0 #000d, 0 0 0 transparent;
+      --nav-z: 110;
     }
     html, body {
       margin: 0; padding: 0; min-height:100vh; background: var(--black); color: var(--fg);
@@ -34,7 +35,7 @@
       opacity: .15;
     }
     nav {
-      width: 100vw; position: fixed; top: 0; left: 0; z-index:100;
+      width: 100vw; position: fixed; top: 0; left: 0; z-index: var(--nav-z);
       background: rgba(18,16,26,.98);
       border-bottom: 2px solid #2d240f;
       padding: 1.3em 4vw .8em 4vw;
@@ -51,27 +52,71 @@
       vertical-align: middle; filter: drop-shadow(0 0 8px #e2c268d6);
     }
     .nav-links { display: flex; gap: 1.2em; }
-    .nav-links a { text-decoration: none; font-weight: 600;
+    .nav-links a {
+      text-decoration: none; font-weight: 600;
       color: var(--muted); text-transform: uppercase;
       font-size: 1.06em; padding: .5em 1.35em .3em 1.35em;
       border-bottom: 2.8px solid transparent; border-radius: 18px;
       background: none; transition: all .14s;
       letter-spacing: .08em;
       outline: none;
+      cursor: pointer;
     }
     .nav-links a:hover, .nav-links a.active {
       color: var(--gold); border-bottom: 2.8px solid var(--gold);
       background: #18170e88; box-shadow: 0 0 12px #e2c26855;
+      outline: none;
     }
 
-    /* HERO */
+    /* Main layout and sections */
+    main, section {
+      max-width: 1300px;
+      margin: 100px auto 50px auto;
+      padding: 0 2vw;
+      box-sizing: border-box;
+      min-height: 65vh;
+      position: relative;
+    }
+    /* Moon and Angel image placeholders left and right on all main pages */
+    .side-image-left, .side-image-right {
+      position: fixed;
+      top: 150px;
+      width: 120px;
+      max-height: 300px;
+      opacity: 0.12;
+      pointer-events: none;
+      user-select: none;
+      z-index: 5;
+      filter: drop-shadow(0 0 8px var(--gold));
+    }
+    .side-image-left {
+      left: 15px;
+    }
+    .side-image-right {
+      right: 15px;
+    }
+    /* Insert your own images by replacing src attributes */
+    /* Pages container */
+    .page {
+      display: none;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    /* Hero style */
     .hero {
-      margin-top: 100px; padding: 5em 2vw 2.2em 2vw;
-      background: radial-gradient(ellipse 60% 55% at 46% 13%, #e2c2680c 0% 100%, transparent 100%),
+      background: radial-gradient(ellipse 60% 55% at 46% 13%, #e2c2680c 0 90%, transparent 100%),
                   linear-gradient(130deg,#262012be 0 50%, #18181c 100%);
       border-radius: 20px; text-align: center; position: relative;
       box-shadow: 0 3px 44px #16140e90, 0 1px 0 0 var(--gold) inset;
       color: var(--fg); min-height: 22vh; border:1.5px solid #78672944;
+      margin-bottom: 3em;
+      padding: 5em 2vw 3em 2vw;
     }
     .hero h1 {
       font-family: 'Cinzel Decorative', serif;
@@ -79,32 +124,36 @@
       text-shadow: 0 2px 13px #e2c26890;
       margin-bottom: .17em; position: relative;
     }
-    .hero h1::after { content: "✦"; font-size: 2.2em; color: var(--gold);
-      opacity: .13; margin-left:.24em; top:5px;position:relative }
+    .hero h1::after {
+      content: "✦"; font-size: 2.2em; color: var(--gold);
+      opacity: .13; margin-left:.24em; top:5px;position:relative;
+    }
     .hero p {
       color: #e2c268e0; font-size: 1.22em; line-height: 1.55; margin-bottom:.7em;
       font-family: 'Georgia', serif; max-width: 750px; margin-left:auto; margin-right:auto;
     }
-
-    /* Kategorien-Grid (im mystic/black-gold Stil, wie der Screenshot) */
+    /* Kategorie Übersicht */
     .categories-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(315px,1fr));
-      gap: 2em; max-width: 1300px; margin: 3.3em auto 2.3em auto; padding: 0 2vw;
+      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      gap: 2em; margin-top: 1.8em;
     }
     .cat-card {
       background: linear-gradient(133deg,#19181b 50%,#23200c 100%);
       border-radius: 24px; border: 2.2px solid #edd39e33; box-shadow: var(--shadow);
       box-shadow: 0 10px 50px #1110157b, 0 0 0 #e2c26824;
-      padding: 2.2em 1.3em 2em 1.5em; min-height: 385px;
+      padding: 2.2em 1.3em 2em 1.5em; min-height: 420px;
       position: relative; display: flex; flex-direction: column;  overflow:hidden;
       align-items:center; justify-content: flex-start;
       transition: box-shadow .18s, transform .15s;
+      cursor: pointer;
     }
-    .cat-card:hover {
+    .cat-card:hover,
+    .cat-card:focus {
       box-shadow: 0 20px 70px -5px #e2c268a7, 0 2px 18px #18121450;
       transform: translateY(-9px) scale(1.014);
       border-color: var(--gold);
+      outline: none;
     }
     .cat-ornament {
       width: 90px; height: 80px; position: absolute; left: 50%; top: 11%; z-index:1;
@@ -115,7 +164,7 @@
       position: relative; z-index: 2; text-align:center;
     }
     .cat-card h2 {
-      font-size: 1.23em; font-family: 'Cinzel Decorative',serif; font-weight: 800;
+      font-size: 1.28em; font-family: 'Cinzel Decorative',serif; font-weight: 800;
       color: var(--gold); margin-bottom:.35em; text-align: center; letter-spacing: .04em;
       position:relative;z-index:2;
     }
@@ -124,133 +173,304 @@
       margin-bottom:1.1em;text-align:center;z-index:2;
     }
     .cat-img {
-      display:block; width:92%; margin: 0.3em auto 1.1em auto; border-radius:14px;
+      display:block; width:90%; height: 160px; object-fit: cover; border-radius:14px;
       box-shadow:0 3px 30px #e2c26824, 0 0 10px #201b0877;
       outline: 1.7px solid #ecd79854;
       background: #332b1b2c;
+      margin-bottom: 1rem;
     }
     .cat-video {
-      display:block;width:92%;margin:0.3em auto 1.1em auto; border-radius:14px;box-shadow:0 3px 30px #e2c26824; outline:1.7px solid #ecd79854;background:#22180d12;
+      display:block; width:90%; height: 160px; border-radius:14px; box-shadow:0 3px 30px #e2c26824;
+      outline:1.7px solid #ecd79854; background:#22180d12;
+      margin-bottom: 1rem;
     }
     .cat-btn {
       margin-top: auto; font-size:1em;
       background: linear-gradient(111deg,var(--gold) 45%,#b59561 100%);
-      color:var(--panel); border:none; padding: .7em 2em; border-radius:35px; font-weight: 700;
+      color:var(--panel); border:none; padding: .75em 2.3em; border-radius:35px; font-weight: 700;
       text-transform:uppercase; box-shadow:0 1px 10px var(--gold);cursor:pointer;
       transition:.14s;
     }
-    .cat-btn:hover {background:linear-gradient(120deg,#b59561 10%,var(--gold) 100%); color:var(--black);}
-    @media (max-width:900px){
-      .logo {font-size:2.1em;}
-      .categories-grid {grid-template-columns:1fr;}
-      .cat-card {padding:1.4em .7em 1.2em 1em;}
-      nav {padding:0.95em 3vw;}
-      .hero {padding:2.3em 2vw 1.5em 2vw;}
+    .cat-btn:hover, .cat-btn:focus {
+      background:linear-gradient(120deg,#b59561 10%,var(--gold) 100%);
+      color:var(--black);
+      outline: none;
     }
-
     /* Footer */
-    footer {background:linear-gradient(130deg,#171312 40%, #282014 100%);
-      color:#cbbd90; margin-top: 3em; padding:2.2em 0 1em 0; border-top:1.4px solid #e2c26818; }
-    .footer-content {display:flex;flex-wrap:wrap;gap:2em;justify-content:center;margin-bottom:.6em;}
-    .footer-section h4 {font-family:'Cinzel Decorative', serif;color:var(--gold); margin-bottom:.2em;}
-    .footer-section p, .footer-section a {font-size:1em;color:#cdb872;}
-    .footer-section a {text-decoration:none; margin: 0 .5em;}
-    .footer-section a:hover {color:var(--gold);}
-    .copyright {margin-top:.8em;color:#bcac80;font-size:.95em;opacity:.85;}
+    footer {
+      background:linear-gradient(130deg,#171312 40%, #282014 100%);
+      color:#cbbd90;
+      margin-top: 3em;
+      padding:2.2em 0 1em 0;
+      border-top:1.4px solid #e2c26818;
+      text-align: center;
+    }
+    .footer-content {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 2em;
+      justify-content:center;
+      margin-bottom:.6em;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-section {
+      min-width: 200px;
+    }
+    .footer-section h4 {
+      font-family:'Cinzel Decorative', serif;
+      color:var(--gold);
+      margin-bottom:.2em;
+    }
+    .footer-section p, .footer-section a {
+      font-size:1em;
+      color:#cdb872;
+      user-select: text;
+    }
+    .footer-section a {
+      text-decoration:none;
+      margin: 0 .5em;
+    }
+    .footer-section a:hover {
+      color:var(--gold);
+    }
+    .copyright {
+      margin-top:.8em;
+      color:#bcac80;
+      font-size:.95em;
+      opacity:.85;
+    }
+    /* About page centering and max width fix */
+    #about {
+      text-align: center;
+      max-width: 900px;
+      margin: 100px auto 80px auto;
+      padding: 0 2vw;
+    }
   </style>
 </head>
 <body>
+  <!-- Left and right side images placeholders for your moon and angel images -->
+  <img src="DUMMY_LINK_MOON_LEFT.jpg" alt="Mond Bild (links)" class="side-image-left" aria-hidden="true" />
+  <img src="DUMMY_LINK_ANGEL_RIGHT.jpg" alt="Engel Bild (rechts)" class="side-image-right" aria-hidden="true" />
+
   <!-- Navigation -->
   <nav>
-    <div class="logo">
-      <span class="svg"><svg viewBox="0 0 50 50"><path d="M25,5 Q35,22 46,13 Q37,27 47,39 Q26,33 25,50 Q17,33 3,39 Q13,22 4,13 Q19,15 25,5 Z" fill="#E2C268"/></svg></span>
+    <div class="logo" tabindex="0" role="button" aria-label="Zur Startseite wechseln" onclick="showPage('home')">
+      <span class="svg"><svg viewBox="0 0 50 50" aria-hidden="true" focusable="false"><path d="M25,5 Q35,22 46,13 Q37,27 47,39 Q26,33 25,50 Q17,33 3,39 Q13,22 4,13 Q19,15 25,5 Z" fill="#E2C268"/></svg></span>
       Mystic Vision
     </div>
-    <div class="nav-links">
-      <a class="active" href="#home">Start</a>
-      <a href="#beratung">Beratung</a>
-      <a href="#shop">Shop</a>
-      <a href="#kurse">Kurse</a>
-      <a href="#about">Über Uns</a>
+    <div class="nav-links" role="navigation" aria-label="Hauptnavigation">
+      <a class="active" href="#home" onclick="showPage('home')" aria-current="page">Start</a>
+      <a href="#beratung" onclick="showPage('beratung')">Beratung</a>
+      <a href="#shop" onclick="showPage('shop')">Shop</a>
+      <a href="#kurse" onclick="showPage('kurse')">Kurse</a>
+      <a href="#about" onclick="showPage('about')">Über Uns</a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Mystic Vision</h1>
-    <p>Erlebe die neue Dimension von Spiritualität – Magie, Beratung & Shop im exklusiv mystischen Design.</p>
-    <p style="color:var(--gold);font-size:1em;margin-top:1em;">Finde deine Energie neu: Mit echten Heilsteinen, magischen Kerzen, Ritualen und spiritueller Top-Beratung.</p>
-  </section>
+  <!-- Seitenbereiche mit Inhalt -->
 
-  <!-- Produkte & Kategorien (jede Kategorie mit konkretem Beispielprodukt + Bild/Video!) -->
-  <section class="categories-grid">
-    <!-- HEILSTEINE -->
-    <div class="cat-card">
-      <img class="cat-img" src="DUMMY-LINK-HEILSTEIN-BILD.jpg" alt="Königsblauer Saphir – Heilstein"/>
-      <div class="cat-symbol">⟡</div>
-      <svg class="cat-ornament" viewBox="0 0 100 80"><path d="M50 8 Q65 35, 88 35 Q78 49, 85 71 Q65 57, 50 80 Q35 57, 15 71 Q22 49, 12 35 Q35 35, 50 8 Z" fill="#E2C268"/></svg>
-      <h2>Königsblauer Saphir</h2>
-      <p>Kraft, Klarheit & spirituelle Vision – Edelstein aus Sri Lanka, aktiviert das Dritte Auge und schützt deine Aura.</p>
-      <button class="cat-btn">Zum Shop</button>
-    </div>
-    <!-- AMULETTE / KETTEN -->
-    <div class="cat-card">
-      <img class="cat-img" src="DUMMY-LINK-AMULETT-BILD.jpg" alt="Obsidian Schutzamulett"/>
-      <div class="cat-symbol">✧</div>
-      <svg class="cat-ornament" viewBox="0 0 100 80"><ellipse cx="50" cy="40" rx="45" ry="30" fill="#E2C268"/></svg>
-      <h2>Obsidian Schutzamulett</h2>
-      <p>Handgefertigtes Amulett aus schwarzem Obsidian in 925er Silber, schützt zuverlässig vor negativer Energie.</p>
-      <button class="cat-btn">Zu den Amuletten</button>
-    </div>
-    <!-- WASSERSTEINE -->
-    <div class="cat-card">
-      <video class="cat-video" poster="DUMMY-LINK-WASSERSTEINEN-POSTER.jpg" controls>
-        <source src="DUMMY-LINK-WASSERSTEINEN-VIDEO.mp4" type="video/mp4"/>
-      </video>
-      <div class="cat-symbol">✥</div>
-      <svg class="cat-ornament" viewBox="0 0 100 80"><ellipse cx="50" cy="40" rx="38" ry="16" fill="#E2C268"/></svg>
-      <h2>Basis-Mischung Wassersteine</h2>
-      <p>Rosenquarz, Amethyst und Bergkristall zur energetischen Vitalisierung deines Trinkwassers.</p>
-      <button class="cat-btn">Wassersteine kaufen</button>
-    </div>
-    <!-- RITUALKERZEN -->
-    <div class="cat-card">
-      <img class="cat-img" src="DUMMY-LINK-RITUALKERZEN-BILD.jpg" alt="Waldspirit Ritualkerze"/>
-      <div class="cat-symbol">⩓</div>
-      <svg class="cat-ornament" viewBox="0 0 100 80"><ellipse cx="50" cy="40" rx="40" ry="18" fill="#E2C268"/></svg>
-      <h2>Waldspirit Ritualkerze</h2>
-      <p>Luxus-Soyakerze, handgegossen mit Tannen- und Moosduft. Perfekt für Rituale und Meditation im Zeichen des Waldes.</p>
-      <button class="cat-btn">Kerzen entdecken</button>
-    </div>
-    <!-- PFERDEHEILSTEINE -->
-    <div class="cat-card">
-      <img class="cat-img" src="DUMMY-LINK-PFERDEBUERSTE-BILD.jpg" alt="Heilstein-Pferdebürste"/>
-      <div class="cat-symbol">☽</div>
-      <h2>Edelstein-Pferdebürste</h2>
-      <p>Edle Holzbürste mit eingearbeiteten Heilsteinen, die die Energie beim Bürsten aufs Pferd übertragen.</p>
-      <button class="cat-btn">Pferdebürsten ansehen</button>
-    </div>
-    <!-- KARTENLEGEKURSE -->
-    <div class="cat-card">
-      <img class="cat-img" src="DUMMY-LINK-KARTENKURS-BILD.jpg" alt="Kartenlegekurs Online"/>
-      <div class="cat-symbol">🃏</div>
-      <svg class="cat-ornament" viewBox="0 0 95 80"><rect x="16" y="22" width="59" height="38" rx="6" fill="#E2C268"/></svg>
-      <h2>Kartenlege-Kurs Premium</h2>
-      <p>Online-Ausbildung mit Zertifikat, viel Praxis und Zugang zu exklusiven Ritualen und Community.</p>
-      <button class="cat-btn">Kurs buchen</button>
-    </div>
-    <!-- SPIRITUELLE BERATUNG -->
-    <div class="cat-card">
-      <img class="cat-img" src="DUMMY-LINK-BERATUNG-BILD.jpg" alt="Spirituelle Beratung und Kartenlegen"/>
-      <div class="cat-symbol">🌙</div>
-      <svg class="cat-ornament" viewBox="0 0 90 80"><ellipse cx="51" cy="40" rx="37" ry="19" fill="#E2C268"/></svg>
-      <h2>Kartenlegen & Beratung</h2>
-      <p>Individuelle Lebenshilfe, Kartenlegen, Energiearbeit – vertrauensvoll & diskret mit Herz und Intuition.</p>
-      <button class="cat-btn">Beratung buchen</button>
-    </div>
-  </section>
+  <main role="main">
+    <!-- Startseite -->
+    <section id="home" class="page active" tabindex="0" aria-label="Startseite">
+      <section class="hero" aria-label="Willkommen">
+        <h1>Mystic Vision</h1>
+        <p>Erlebe die neue Dimension von Spiritualität – Magie, Beratung & Shop im exklusiv mystischen Design.</p>
+        <p style="color:var(--gold);font-size:1em;margin-top:1em;">
+          Finde deine Energie neu: Mit echten Heilsteinen, magischen Kerzen, Ritualen und spiritueller Top-Beratung.
+        </p>
+      </section>
+      <section class="categories-grid" aria-label="Übersicht ausgewählter Highlights">
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Heilsteinen wechseln" onclick="showPage('heilsteine')">
+          <img class="cat-img" src="DUMMY-LINK-HEILSTEIN-BILD.jpg" alt="Königsblauer Saphir – Heilstein" />
+          <div class="cat-symbol">⟡</div>
+          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><path d="M50 8 Q65 35, 88 35 Q78 49, 85 71 Q65 57, 50 80 Q35 57, 15 71 Q22 49, 12 35 Q35 35, 50 8 Z" fill="#E2C268"/></svg>
+          <h2>Kraftvolle Heilsteine</h2>
+          <p>Spirituelle Kraft und Schutz durch handverlesene Edelsteine höchster Qualität.</p>
+          <button class="cat-btn" type="button" onclick="showPage('heilsteine')">Zum Shop</button>
+        </article>
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Amuletten & Ketten wechseln" onclick="showPage('amulette')">
+          <img class="cat-img" src="DUMMY-LINK-AMULETT-BILD.jpg" alt="Obsidian Schutzamulett" />
+          <div class="cat-symbol">✧</div>
+          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><ellipse cx="50" cy="40" rx="45" ry="30" fill="#E2C268"/></svg>
+          <h2>Heilstein-Amulette & Ketten</h2>
+          <p>Schutz und Intuition vereint in feinster Handarbeit mit Edelsteinenergie.</p>
+          <button class="cat-btn" type="button" onclick="showPage('amulette')">Zu den Amuletten</button>
+        </article>
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Wassersteinen wechseln" onclick="showPage('wassersteine')">
+          <video class="cat-video" poster="DUMMY-LINK-WASSERSTEINEN-POSTER.jpg" controls aria-label="Videoanleitung Wassersteine">
+            <source src="DUMMY-LINK-WASSERSTEINEN-VIDEO.mp4" type="video/mp4"/>
+          </video>
+          <div class="cat-symbol">✥</div>
+          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><ellipse cx="50" cy="40" rx="38" ry="16" fill="#E2C268"/></svg>
+          <h2>Vitalisierende Wassersteine</h2>
+          <p>Erwecke die Kraft der Kristalle - für lebendiges und reines Wasser.</p>
+          <button class="cat-btn" type="button" onclick="showPage('wassersteine')">Wassersteine kaufen</button>
+        </article>
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Ritualkerzen wechseln" onclick="showPage('ritualkerzen')">
+          <img class="cat-img" src="DUMMY-LINK-RITUALKERZEN-BILD.jpg" alt="Waldspirit Ritualkerze" />
+          <div class="cat-symbol">⩓</div>
+          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><ellipse cx="50" cy="40" rx="40" ry="18" fill="#E2C268"/></svg>
+          <h2>Magische Ritualkerzen</h2>
+          <p>Handgegossen mit natürlichen Düften, perfekt für Meditation und spirituelle Rituale.</p>
+          <button class="cat-btn" type="button" onclick="showPage('ritualkerzen')">Kerzen entdecken</button>
+        </article>
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Pferde-Heilsteinen wechseln" onclick="showPage('pferdeheilsteine')">
+          <img class="cat-img" src="DUMMY-LINK-PFERDEBUERSTE-BILD.jpg" alt="Heilstein-Pferdebürste" />
+          <div class="cat-symbol">☽</div>
+          <h2>Edelstein-Pferdebürsten</h2>
+          <p>Sanfte Energieübertragung für die Harmonie und Entspannung deines Pferdes.</p>
+          <button class="cat-btn" type="button" onclick="showPage('pferdeheilsteine')">Pferdebürsten ansehen</button>
+        </article>
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Kartenlegekursen wechseln" onclick="showPage('kurse')">
+          <img class="cat-img" src="DUMMY-LINK-KARTENKURS-BILD.jpg" alt="Kartenlegekurs Online" />
+          <div class="cat-symbol">🃏</div>
+          <svg class="cat-ornament" viewBox="0 0 95 80" aria-hidden="true" focusable="false"><rect x="16" y="22" width="59" height="38" rx="6" fill="#E2C268"/></svg>
+          <h2>Kartenlege-Kurse</h2>
+          <p>Praxisnahe Ausbildung mit Zertifikat - lerne Kartenlegen und Spirituelle Techniken online & live.</p>
+          <button class="cat-btn" type="button" onclick="showPage('kurse')">Kurs buchen</button>
+        </article>
+        <article class="cat-card" tabindex="0" role="button" aria-label="Zur spirituellen Beratung wechseln" onclick="showPage('beratung')">
+          <img class="cat-img" src="DUMMY-LINK-BERATUNG-BILD.jpg" alt="Spirituelle Beratung und Kartenlegen" />
+          <div class="cat-symbol">🌙</div>
+          <svg class="cat-ornament" viewBox="0 0 90 80" aria-hidden="true" focusable="false"><ellipse cx="51" cy="40" rx="37" ry="19" fill="#E2C268"/></svg>
+          <h2>Spirituelle Beratung</h2>
+          <p>Intuitive Kartenlegung, Energiearbeit und Lebenshilfe – persönlich, empathisch und individuell.</p>
+          <button class="cat-btn" type="button" onclick="showPage('beratung')">Zur Beratung</button>
+        </article>
+      </section>
+    </section>
 
-  <!-- Footer im mystisch luxuriösen Black/Gold-Stil -->
+    <!-- Beratung -->
+    <section id="beratung" class="page" tabindex="0" aria-label="Spirituelle Beratung und Kartenlegen">
+      <section class="hero">
+        <h1>Spirituelle Beratung & Kartenlegen</h1>
+        <p>Vertraue auf langjährige Erfahrung in Tarot, Lenormand, Engelkarten und intuitiver Lebensführung.</p>
+      </section>
+      <article style="max-width: 900px; margin: 0 auto; text-align:center; margin-bottom:3em;">
+        <img src="DUMMY-LINK-BERATUNG-BILD.jpg" alt="Spirituelle Beratung Illustration" style="max-width:100%; border-radius:15px; box-shadow: 0 0 25px var(--gold);" />
+        <p style="margin-top: 1em; font-size:1.15em; color: var(--muted);">Ob persönliche Sessions oder Online-Beratungen - wir sind für dich da.</p>
+      </article>
+      <article style="max-width: 900px; margin: 0 auto; text-align: left; color: var(--muted); font-size: 1.1em; line-height: 1.6;">
+        <h2 style="font-family: 'Cinzel Decorative', serif; color: var(--gold); margin-bottom: 0.9em;">Detailangebote</h2>
+        <ul>
+          <li>Tarot-Analysen & Lebensberatung</li>
+          <li>Engelkarten & intuitive Impulse</li>
+          <li>Chakra- und Energiebalance</li>
+          <li>Spirituelles Coaching & Meditation</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Shop mit Beispielprodukten -->
+    <section id="shop" class="page" tabindex="0" aria-label="Shop mit Heilsteinen, Amuletten, Wassersteinen und mehr">
+      <section class="hero">
+        <h1>Mystischer Shop</h1>
+        <p>Entdecke hochwertige Produkte für deine spirituelle Praxis und dein Wohlbefinden.</p>
+      </section>
+
+      <!-- HEILSTEINE -->
+      <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
+        <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Heilsteine</h2>
+        <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
+          <img src="DUMMY-LINK-HEILSTEIN-BILD.jpg" alt="Königsblauer Saphir aus Sri Lanka" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <div style="flex: 1; color: var(--fg);">
+            <h3>Königsblauer Saphir</h3>
+            <p>Weisheit & Vision – Edelstein aus Sri Lanka, aktiviert das Dritte Auge und schützt die Aura.</p>
+            <strong>Preis:</strong> €349,00<br/>
+            <button class="cat-btn" style="margin-top:1.2em;">In den Warenkorb</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- AMULETTE / KETTEN -->
+      <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
+        <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Heilstein-Amulette & Ketten</h2>
+        <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
+          <img src="DUMMY-LINK-AMULETT-BILD.jpg" alt="Obsidian Schutzamulett" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <div style="flex: 1; color: var(--fg);">
+            <h3>Obsidian Schutzamulett</h3>
+            <p>Handgefertigt aus 925er Silber mit schwarzem Obsidian, schützt vor negativen Energien.</p>
+            <strong>Preis:</strong> €189,00<br/>
+            <button class="cat-btn" style="margin-top:1.2em;">In den Warenkorb</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- WASSERSTEINE -->
+      <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
+        <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Wassersteine</h2>
+        <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; flex-wrap: wrap; align-items: center;">
+          <video controls poster="DUMMY-LINK-WASSERSTEINEN-POSTER.jpg" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);">
+            <source src="DUMMY-LINK-WASSERSTEINEN-VIDEO.mp4" type="video/mp4" />
+            Ihr Browser unterstützt das Video-Format nicht.
+          </video>
+          <div style="flex: 1; color: var(--fg);">
+            <h3>Basis-Mischung Wassersteine</h3>
+            <p>Rosenquarz, Amethyst, Bergkristall – energetisiert und reinigt dein Trinkwasser auf natürliche Weise.</p>
+            <strong>Preis:</strong> €49,00<br/>
+            <button class="cat-btn" style="margin-top:1.2em;">In den Warenkorb</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- RITUALKERZEN -->
+      <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
+        <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Mystische Ritualkerzen</h2>
+        <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
+          <img src="DUMMY-LINK-RITUALKERZEN-BILD.jpg" alt="Waldspirit Ritualkerze" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <div style="flex: 1; color: var(--fg);">
+            <h3>Waldspirit Ritualkerze</h3>
+            <p>Handgegossen, mit Tannenduft & Moos – für die Verbindung zur Natur und spirituelle Rituale.</p>
+            <strong>Preis:</strong> €39,00<br/>
+            <button class="cat-btn" style="margin-top:1.2em;">In den Warenkorb</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PFERDE-HEILSTEINE -->
+      <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
+        <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Pferde-Heilsteine & Bürsten</h2>
+        <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
+          <img src="DUMMY-LINK-PFERDEBUERSTE-BILD.jpg" alt="Heilstein-Pferdebürste" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <div style="flex: 1; color: var(--fg);">
+            <h3>Heilstein-Pferdebürste</h3>
+            <p>Naturholz kombiniert mit Edelsteinen, um Energie und Harmonie auf dein Pferd zu übertragen.</p>
+            <strong>Preis:</strong> €79,00<br/>
+            <button class="cat-btn" style="margin-top:1.2em;">In den Warenkorb</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Kartenlegekurse -->
+    <section id="kurse" class="page" tabindex="0" aria-label="Kartenlege-Kurse">
+      <section class="hero">
+        <h1>Kartenlege-Kurse</h1>
+        <p>Zertifizierte, intensive Online- und Präsenzkurse für Anfänger und Fortgeschrittene.</p>
+      </section>
+      <article style="max-width: 900px; margin: 2em auto; color: var(--muted); font-size:1.1em; line-height: 1.6;">
+        <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom:1em;">Beispielkurs: Grundkurs Kartenlegen</h2>
+        <img src="DUMMY-LINK-KARTENKURS-BILD.jpg" alt="Kartenlegekurs Online" style="width:100%; max-width:350px; border-radius:15px; margin-bottom:1.2em; box-shadow: 0 0 22px var(--gold);" />
+        <p>Praxisnaher Einstieg in Tarot, Lenormand und Engelkarten. Erhalte ein Zertifikat und lerne, deine Fähigkeiten zu stärken.</p>
+        <button class="cat-btn" type="button">Kurs buchen</button>
+      </article>
+    </section>
+
+    <!-- Über Uns -->
+    <section id="about" class="page" tabindex="0" aria-label="Über Uns">
+      <section class="hero" style="max-width: 900px; margin: 0 auto;">
+        <h1>Über Mystic Vision</h1>
+        <p>Seit über 20 Jahren begleiten wir Menschen auf ihrem spirituellen Weg mit Herz, Wissen und echtem Engagement.</p>
+        <p>Unser Team besteht aus zertifizierten Kartenleger:innen, erfahrenen Edelsteinmeister:innen und empathischen spirituellen Berater:innen.</p>
+        <p>Wir verbinden uralte Weisheit mit moderner Lebenshilfe – individuell, professionell, liebevoll.</p>
+      </section>
+    </section>
+  </main>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <section class="footer-section">
@@ -261,14 +481,51 @@
       </section>
       <section class="footer-section">
         <h4>Links</h4>
-        <a href="#home">Start</a>
-        <a href="#beratung">Beratung</a>
-        <a href="#shop">Shop</a>
-        <a href="#kurse">Kurse</a>
-        <a href="#about">Über uns</a>
+        <a href="#home" onclick="showPage('home')">Start</a>
+        <a href="#beratung" onclick="showPage('beratung')">Beratung</a>
+        <a href="#shop" onclick="showPage('shop')">Shop</a>
+        <a href="#kurse" onclick="showPage('kurse')">Kurse</a>
+        <a href="#about" onclick="showPage('about')">Über Uns</a>
       </section>
     </div>
     <div class="copyright">&copy; 2025 Mystic Vision. All Rights Reserved.</div>
   </footer>
+
+  <script>
+    // Seitenumschaltung und Navigation
+    function showPage(id) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.remove('active');
+        page.setAttribute('aria-hidden', 'true');
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        target.setAttribute('aria-hidden', 'false');
+        window.scrollTo({top: 100, behavior: 'smooth'});
+      }
+
+      // Navigation Link Highlight
+      const links = document.querySelectorAll('.nav-links a');
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    // Tastaturbedienung für Logo
+    document.querySelector('.logo').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showPage('home');
+      }
+    });
+  </script>
 </body>
 </html>
