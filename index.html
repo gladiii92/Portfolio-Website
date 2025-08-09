@@ -34,61 +34,6 @@
       pointer-events: none;
       opacity: .15;
     }
-
-    
-    .category-banner {
-      background: linear-gradient(135deg, #141214, #261f15);
-      padding: 1.6rem 1.5vw;
-      border-radius: 14px;
-      max-width: 1280px;
-      margin: 2rem auto 3rem auto;
-      box-shadow: 0 0 22px #bfa64f88 inset;
-    }
-    .container {
-      display: flex;
-      justify-content: space-evenly;
-      gap: 1.4rem;
-      flex-wrap: wrap;
-    }
-    .category-button {
-      background: #1f1b10;
-      flex: 1 1 130px;
-      max-width: 160px;
-      min-width: 130px;
-      color: #bfa64f;
-      font-family: 'Cinzel Decorative', serif;
-      font-weight: 700;
-      font-size: 1.04rem;
-      letter-spacing: 0.12em;
-      text-align: center;
-      text-decoration: none;
-      padding: 1.1rem 0.7rem;
-      border: 2.3px solid #bfa64f80;
-      border-radius: 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      user-select: none;
-      transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-    }
-    .category-button:hover,
-    .category-button:focus {
-      color: #f7e576;
-      border-color: #fff3a2;
-      box-shadow: 0 0 20px 3px #fff3a230;
-      background: #2e2a0c;
-      outline: none;
-    }
-    .category-button .icon {
-      font-size: 1.6rem;
-    }
-    .category-button svg.icon {
-      stroke: #bfa64f;
-      fill: none;
-    }
-  
     nav {
       width: 100vw; position: fixed; top: 0; left: 0; z-index: var(--nav-z);
       background: rgba(18,16,26,.98);
@@ -167,15 +112,15 @@
     .hero {
         background-image:
           url('images/dark-mystic-bg.jpg'),
-          radial-gradient(ellipse 60% 55% at 46% 13%, #e2c2680c 0 90%, transparent 100%),
-          linear-gradient(130deg,#262012be 0 50%, #18181c 100%);
+          radial-gradient(ellipse 60% 55% at 46% 13%, rgba(226,194,104,0.08) 0 90%, transparent 100%),
+          linear-gradient(130deg, rgba(38,32,18,0.75) 0 50%, rgba(24,24,28,0.85) 100%);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
         border-radius: 20px;
         text-align: center;
         position: relative;
-        box-shadow: 0 3px 44px #16140e90, 0 1px 0 0 var(--gold) inset;
+        box-shadow: 0 3px 44px rgba(22,20,14,0.56), 0 1px 0 0 var(--gold) inset;
         color: var(--fg);
         min-height: 22vh;
         margin-bottom: 3em;
@@ -194,6 +139,59 @@
     .hero p {
       color: #e2c268e0; font-size: 1.22em; line-height: 1.55; margin-bottom:.7em;
       font-family: 'Georgia', serif; max-width: 750px; margin-left:auto; margin-right:auto;
+    }
+    /* Kategorie Banner */
+    .category-banner {
+      background: linear-gradient(135deg, #141214, #261f15);
+      padding: 1.6rem 1.5vw;
+      border-radius: 14px;
+      max-width: 1280px;
+      margin: 2rem auto 3rem auto;
+      box-shadow: 0 0 22px #bfa64f88 inset;
+    }
+    .container {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .category-button {
+      background: #1f1b10;
+      flex: 1 1 130px;
+      max-width: 160px;
+      min-width: 130px;
+      color: #bfa64f;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 700;
+      font-size: 1.04rem;
+      letter-spacing: 0.12em;
+      text-align: center;
+      text-decoration: none;
+      padding: 1.1rem 0.7rem;
+      border: 2.3px solid #bfa64f80;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      user-select: none;
+      transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+    .category-button:hover,
+    .category-button:focus {
+      color: #f7e576;
+      border-color: #fff3a2;
+      box-shadow: 0 0 20px 3px #fff3a230;
+      background: #2e2a0c;
+      outline: none;
+    }
+    .category-button .icon {
+      font-size: 1.6rem;
+    }
+    .category-button svg.icon {
+      stroke: #bfa64f;
+      fill: none;
     }
     /* Kategorie Übersicht */
     .categories-grid {
@@ -315,8 +313,8 @@
 </head>
 <body>
   <!-- Left and right side images placeholders for your moon and angel images -->
-  <img src="DUMMY_LINK_MOON_LEFT.jpg" alt="Mond Bild (links)" class="side-image-left" aria-hidden="true" />
-  <img src="DUMMY_LINK_ANGEL_RIGHT.jpg" alt="Engel Bild (rechts)" class="side-image-right" aria-hidden="true" />
+  <img src="images/dummy-moon-left.png" alt="Mond Bild (links)" class="side-image-left" aria-hidden="true" />
+  <img src="images/dummy-angel-right.png" alt="Engel Bild (rechts)" class="side-image-right" aria-hidden="true" />
 
   <!-- Navigation -->
   <nav>
@@ -333,68 +331,70 @@
     </div>
   </nav>
 
-  <!-- Seitenbereiche mit Inhalt -->
-
-  <main role="main">
+  <main role="main" tabindex="-1">
     <!-- Startseite -->
-  <section class="category-banner" aria-label="Kategorienübersicht als Banner">
-    <div class="container">
-      <a href="#heilsteine" class="category-button" role="button" tabindex="0" aria-label="Heilsteine Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Mandala-Icon: Ersetze durch dein SVG -->
-          <circle cx="32" cy="32" r="30" stroke="gold" stroke-width="2" fill="none"/>
-          <path d="M32 2 L32 62 M2 32 L62 32 M10 10 L54 54 M54 10 L10 54" stroke="gold" stroke-width="1" />
-        </svg>
-        Heilsteine
-      </a>
-      <a href="#amulette" class="category-button" role="button" tabindex="0" aria-label="Amulette und Ketten Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Schmuck-Icon -->
-          <ellipse cx="32" cy="32" rx="28" ry="15" stroke="gold" stroke-width="2" fill="none"/>
-          <circle cx="32" cy="32" r="10" stroke="gold" stroke-width="1.5" fill="none"/>
-        </svg>
-        Amulette & Ketten
-      </a>
-      <a href="#wassersteine" class="category-button" role="button" tabindex="0" aria-label="Wassersteine Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Tropfen-Icon -->
-          <path d="M32 2 C20 20, 20 44, 32 62 C44 44, 44 20, 32 2 Z" stroke="gold" stroke-width="2" fill="none"/>
-        </svg>
-        Wassersteine
-      </a>
-      <a href="#ritualkerzen" class="category-button" role="button" tabindex="0" aria-label="Ritualkerzen Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Kerzenflamme -->
-          <path d="M32 10 Q30 22, 34 30 Q28 38, 32 54 Q36 38, 30 30 Q34 22, 32 10 Z" stroke="gold" stroke-width="2" fill="none"/>
-        </svg>
-        Ritualkerzen
-      </a>
-      <a href="#pferdeheilsteine" class="category-button" role="button" tabindex="0" aria-label="Pferde-Heilsteine Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Hufeisen-Icon -->
-          <path d="M20 50 A12 20 0 0 1 44 50" stroke="gold" stroke-width="3" fill="none"/>
-          <line x1="20" y1="50" x2="18" y2="54" stroke="gold" stroke-width="2"/>
-          <line x1="44" y1="50" x2="46" y2="54" stroke="gold" stroke-width="2"/>
-        </svg>
-        Pferde-Heilsteine
-      </a>
-      <a href="#kurse" class="category-button" role="button" tabindex="0" aria-label="Kartenlegekurse Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Karten-Icon -->
-          <rect x="15" y="12" width="34" height="40" rx="4" ry="4" stroke="gold" stroke-width="2" fill="none" />
-          <circle cx="32" cy="32" r="8" stroke="gold" stroke-width="1.5" fill="none" />
-        </svg>
-        Kartenlegekurse
-      </a>
-      <a href="#beratung" class="category-button" role="button" tabindex="0" aria-label="Spirituelle Beratung Kategorie aufrufen">
-        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
-          <!-- Beispiel Mond-Icon -->
-          <path d="M40 12 A18 24 0 1 1 20 52 A14 20 0 1 0 40 12 Z" stroke="gold" stroke-width="2" fill="none"/>
-        </svg>
-        Spirituelle Beratung
-      </a>
-    </div>
-  </section>
+    <section id="home" class="page active" tabindex="0" aria-label="Startseite">
+      <section class="hero" aria-label="Willkommen">
+        <h1>Mystic Vision</h1>
+        <p>Erlebe die neue Dimension von Spiritualität – Magie, Beratung & Shop im exklusiv mystischen Design.</p>
+        <p style="color:var(--gold);font-size:1em;margin-top:1em;">
+          Finde deine Energie neu: Mit echten Heilsteinen, magischen Kerzen, Ritualen und spiritueller Top-Beratung.
+        </p>
+      </section>
+
+      <!-- Kategorien Banner -->
+      <section class="category-banner" aria-label="Kategorienübersicht als Banner">
+        <div class="container">
+          <a href="#heilsteine" class="category-button" role="button" tabindex="0" aria-label="Heilsteine Kategorie aufrufen" onclick="showPage('shop')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <circle cx="32" cy="32" r="30" stroke="gold" stroke-width="2" fill="none"/>
+              <path d="M32 2 L32 62 M2 32 L62 32 M10 10 L54 54 M54 10 L10 54" stroke="gold" stroke-width="1" />
+            </svg>
+            Heilsteine
+          </a>
+          <a href="#amulette" class="category-button" role="button" tabindex="0" aria-label="Amulette und Ketten Kategorie aufrufen" onclick="showPage('shop')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <ellipse cx="32" cy="32" rx="28" ry="15" stroke="gold" stroke-width="2" fill="none"/>
+              <circle cx="32" cy="32" r="10" stroke="gold" stroke-width="1.5" fill="none"/>
+            </svg>
+            Amulette & Ketten
+          </a>
+          <a href="#wassersteine" class="category-button" role="button" tabindex="0" aria-label="Wassersteine Kategorie aufrufen" onclick="showPage('shop')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <path d="M32 2 C20 20, 20 44, 32 62 C44 44, 44 20, 32 2 Z" stroke="gold" stroke-width="2" fill="none"/>
+            </svg>
+            Wassersteine
+          </a>
+          <a href="#ritualkerzen" class="category-button" role="button" tabindex="0" aria-label="Ritualkerzen Kategorie aufrufen" onclick="showPage('shop')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <path d="M32 10 Q30 22, 34 30 Q28 38, 32 54 Q36 38, 30 30 Q34 22, 32 10 Z" stroke="gold" stroke-width="2" fill="none"/>
+            </svg>
+            Ritualkerzen
+          </a>
+          <a href="#pferdeheilsteine" class="category-button" role="button" tabindex="0" aria-label="Pferde-Heilsteine Kategorie aufrufen" onclick="showPage('shop')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <path d="M20 50 A12 20 0 0 1 44 50" stroke="gold" stroke-width="3" fill="none"/>
+              <line x1="20" y1="50" x2="18" y2="54" stroke="gold" stroke-width="2"/>
+              <line x1="44" y1="50" x2="46" y2="54" stroke="gold" stroke-width="2"/>
+            </svg>
+            Pferde-Heilsteine
+          </a>
+          <a href="#kurse" class="category-button" role="button" tabindex="0" aria-label="Kartenlegekurse Kategorie aufrufen" onclick="showPage('kurse')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <rect x="15" y="12" width="34" height="40" rx="4" ry="4" stroke="gold" stroke-width="2" fill="none" />
+              <circle cx="32" cy="32" r="8" stroke="gold" stroke-width="1.5" fill="none" />
+            </svg>
+            Kartenlegekurse
+          </a>
+          <a href="#beratung" class="category-button" role="button" tabindex="0" aria-label="Spirituelle Beratung Kategorie aufrufen" onclick="showPage('beratung')">
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+              <path d="M40 12 A18 24 0 1 1 20 52 A14 20 0 1 0 40 12 Z" stroke="gold" stroke-width="2" fill="none"/>
+            </svg>
+            Spirituelle Beratung
+          </a>
+        </div>
+      </section>
+    </section>
 
     <!-- Beratung -->
     <section id="beratung" class="page" tabindex="0" aria-label="Spirituelle Beratung und Kartenlegen">
@@ -403,7 +403,7 @@
         <p>Vertraue auf langjährige Erfahrung in Tarot, Lenormand, Engelkarten und intuitiver Lebensführung.</p>
       </section>
       <article style="max-width: 900px; margin: 0 auto; text-align:center; margin-bottom:3em;">
-        <img src="DUMMY-LINK-BERATUNG-BILD.jpg" alt="Spirituelle Beratung Illustration" style="max-width:100%; border-radius:15px; box-shadow: 0 0 25px var(--gold);" />
+        <img src="images/dummy-beratung.png" alt="Spirituelle Beratung Illustration" style="max-width:100%; border-radius:15px; box-shadow: 0 0 25px var(--gold);" />
         <p style="margin-top: 1em; font-size:1.15em; color: var(--muted);">Ob persönliche Sessions oder Online-Beratungen - wir sind für dich da.</p>
       </article>
       <article style="max-width: 900px; margin: 0 auto; text-align: left; color: var(--muted); font-size: 1.1em; line-height: 1.6;">
@@ -428,7 +428,7 @@
       <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
         <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Heilsteine</h2>
         <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
-          <img src="DUMMY-LINK-HEILSTEIN-BILD.jpg" alt="Königsblauer Saphir aus Sri Lanka" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <img src="images/dummy-saphir.jpg" alt="Königsblauer Saphir aus Sri Lanka" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
           <div style="flex: 1; color: var(--fg);">
             <h3>Königsblauer Saphir</h3>
             <p>Weisheit & Vision – Edelstein aus Sri Lanka, aktiviert das Dritte Auge und schützt die Aura.</p>
@@ -442,7 +442,7 @@
       <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
         <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Heilstein-Amulette & Ketten</h2>
         <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
-          <img src="DUMMY-LINK-AMULETT-BILD.jpg" alt="Obsidian Schutzamulett" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <img src="images/dummy-amulet.jpg" alt="Obsidian Schutzamulett" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
           <div style="flex: 1; color: var(--fg);">
             <h3>Obsidian Schutzamulett</h3>
             <p>Handgefertigt aus 925er Silber mit schwarzem Obsidian, schützt vor negativen Energien.</p>
@@ -456,8 +456,8 @@
       <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
         <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Wassersteine</h2>
         <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; flex-wrap: wrap; align-items: center;">
-          <video controls poster="DUMMY-LINK-WASSERSTEINEN-POSTER.jpg" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);">
-            <source src="DUMMY-LINK-WASSERSTEINEN-VIDEO.mp4" type="video/mp4" />
+          <video controls poster="images/dummy-wasser-poster.jpg" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);">
+            <source src="videos/dummy-wasser-video.mp4" type="video/mp4" />
             Ihr Browser unterstützt das Video-Format nicht.
           </video>
           <div style="flex: 1; color: var(--fg);">
@@ -473,7 +473,7 @@
       <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
         <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Mystische Ritualkerzen</h2>
         <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
-          <img src="DUMMY-LINK-RITUALKERZEN-BILD.jpg" alt="Waldspirit Ritualkerze" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <img src="images/dummy-ritualkerze.jpg" alt="Waldspirit Ritualkerze" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
           <div style="flex: 1; color: var(--fg);">
             <h3>Waldspirit Ritualkerze</h3>
             <p>Handgegossen, mit Tannenduft & Moos – für die Verbindung zur Natur und spirituelle Rituale.</p>
@@ -487,7 +487,7 @@
       <article style="margin-bottom: 3em; max-width:900px; margin-left:auto; margin-right:auto;">
         <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom: .7em;">Pferde-Heilsteine & Bürsten</h2>
         <div style="background: var(--panel); border-radius: 14px; padding: 1.7em; box-shadow: 0 4px 29px #b3940c55; display: flex; gap: 1.5em; align-items: center; flex-wrap: wrap;">
-          <img src="DUMMY-LINK-PFERDEBUERSTE-BILD.jpg" alt="Heilstein-Pferdebürste" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
+          <img src="images/dummy-pferdebuerste.jpg" alt="Heilstein-Pferdebürste" style="max-width: 220px; border-radius: 14px; box-shadow: 0 0 17px var(--gold);" />
           <div style="flex: 1; color: var(--fg);">
             <h3>Heilstein-Pferdebürste</h3>
             <p>Naturholz kombiniert mit Edelsteinen, um Energie und Harmonie auf dein Pferd zu übertragen.</p>
@@ -506,7 +506,7 @@
       </section>
       <article style="max-width: 900px; margin: 2em auto; color: var(--muted); font-size:1.1em; line-height: 1.6;">
         <h2 style="font-family:'Cinzel Decorative', serif; color: var(--gold); margin-bottom:1em;">Beispielkurs: Grundkurs Kartenlegen</h2>
-        <img src="DUMMY-LINK-KARTENKURS-BILD.jpg" alt="Kartenlegekurs Online" style="width:100%; max-width:350px; border-radius:15px; margin-bottom:1.2em; box-shadow: 0 0 22px var(--gold);" />
+        <img src="images/dummy-kartenkurs.jpg" alt="Kartenlegekurs Online" style="width:100%; max-width:350px; border-radius:15px; margin-bottom:1.2em; box-shadow: 0 0 22px var(--gold);" />
         <p>Praxisnaher Einstieg in Tarot, Lenormand und Engelkarten. Erhalte ein Zertifikat und lerne, deine Fähigkeiten zu stärken.</p>
         <button class="cat-btn" type="button">Kurs buchen</button>
       </article>
@@ -523,7 +523,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <section class="footer-section">
@@ -544,44 +543,41 @@
     <div class="copyright">&copy; 2025 Mystic Vision. All Rights Reserved.</div>
   </footer>
 
-  <script>
-    // Seitenumschaltung und Navigation
-    function showPage(id) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => {
-        page.classList.remove('active');
-        page.setAttribute('aria-hidden', 'true');
-      });
-      const target = document.getElementById(id);
-      if (target) {
-        target.classList.add('active');
-        target.setAttribute('aria-hidden', 'false');
-        window.scrollTo({top: 100, behavior: 'smooth'});
-      }
-
-      // Navigation Link Highlight
-      const links = document.querySelectorAll('.nav-links a');
-      links.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + id) {
-          link.classList.add('active');
-          link.setAttribute('aria-current', 'page');
-        } else {
-          link.removeAttribute('aria-current');
-        }
-      });
+<script>
+  // Seitenumschaltung und Navigation
+  function showPage(id) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+      page.classList.remove('active');
+      page.setAttribute('aria-hidden', 'true');
+    });
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      target.setAttribute('aria-hidden', 'false');
+      window.scrollTo({top: 100, behavior: 'smooth'});
     }
 
-    // Tastaturbedienung für Logo
-    document.querySelector('.logo').addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        showPage('home');
+    // Navigation Link Highlight
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + id) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
       }
     });
-  </script>
+  }
+
+  // Tastaturbedienung für Logo
+  document.querySelector('.logo').addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      showPage('home');
+    }
+  });
+</script>
 </body>
 </html>
-
-
-
