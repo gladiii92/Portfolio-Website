@@ -34,6 +34,61 @@
       pointer-events: none;
       opacity: .15;
     }
+
+    
+    .category-banner {
+      background: linear-gradient(135deg, #141214, #261f15);
+      padding: 1.6rem 1.5vw;
+      border-radius: 14px;
+      max-width: 1280px;
+      margin: 2rem auto 3rem auto;
+      box-shadow: 0 0 22px #bfa64f88 inset;
+    }
+    .container {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .category-button {
+      background: #1f1b10;
+      flex: 1 1 130px;
+      max-width: 160px;
+      min-width: 130px;
+      color: #bfa64f;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 700;
+      font-size: 1.04rem;
+      letter-spacing: 0.12em;
+      text-align: center;
+      text-decoration: none;
+      padding: 1.1rem 0.7rem;
+      border: 2.3px solid #bfa64f80;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      user-select: none;
+      transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+    .category-button:hover,
+    .category-button:focus {
+      color: #f7e576;
+      border-color: #fff3a2;
+      box-shadow: 0 0 20px 3px #fff3a230;
+      background: #2e2a0c;
+      outline: none;
+    }
+    .category-button .icon {
+      font-size: 1.6rem;
+    }
+    .category-button svg.icon {
+      stroke: #bfa64f;
+      fill: none;
+    }
+  
     nav {
       width: 100vw; position: fixed; top: 0; left: 0; z-index: var(--nav-z);
       background: rgba(18,16,26,.98);
@@ -282,74 +337,64 @@
 
   <main role="main">
     <!-- Startseite -->
-    <section id="home" class="page active" tabindex="0" aria-label="Startseite">
-      <section class="hero" aria-label="Willkommen">
-        <h1>Mystic Vision</h1>
-        <p>Erlebe die neue Dimension von Spiritualität – Magie, Beratung & Shop im exklusiv mystischen Design.</p>
-        <p style="color:var(--gold);font-size:1em;margin-top:1em;">
-          Finde deine Energie neu: Mit echten Heilsteinen, magischen Kerzen, Ritualen und spiritueller Top-Beratung.
-        </p>
-      </section>
-      <section class="categories-grid" aria-label="Übersicht ausgewählter Highlights">
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Heilsteinen wechseln" onclick="showPage('heilsteine')">
-          <img class="cat-img" src="DUMMY-LINK-HEILSTEIN-BILD.jpg" alt="Königsblauer Saphir – Heilstein" />
-          <div class="cat-symbol">⟡</div>
-          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><path d="M50 8 Q65 35, 88 35 Q78 49, 85 71 Q65 57, 50 80 Q35 57, 15 71 Q22 49, 12 35 Q35 35, 50 8 Z" fill="#E2C268"/></svg>
-          <h2>Kraftvolle Heilsteine</h2>
-          <p>Spirituelle Kraft und Schutz durch handverlesene Edelsteine höchster Qualität.</p>
-          <button class="cat-btn" type="button" onclick="showPage('heilsteine')">Zum Shop</button>
-        </article>
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Amuletten & Ketten wechseln" onclick="showPage('amulette')">
-          <img class="cat-img" src="DUMMY-LINK-AMULETT-BILD.jpg" alt="Obsidian Schutzamulett" />
-          <div class="cat-symbol">✧</div>
-          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><ellipse cx="50" cy="40" rx="45" ry="30" fill="#E2C268"/></svg>
-          <h2>Heilstein-Amulette & Ketten</h2>
-          <p>Schutz und Intuition vereint in feinster Handarbeit mit Edelsteinenergie.</p>
-          <button class="cat-btn" type="button" onclick="showPage('amulette')">Zu den Amuletten</button>
-        </article>
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Wassersteinen wechseln" onclick="showPage('wassersteine')">
-          <video class="cat-video" poster="DUMMY-LINK-WASSERSTEINEN-POSTER.jpg" controls aria-label="Videoanleitung Wassersteine">
-            <source src="DUMMY-LINK-WASSERSTEINEN-VIDEO.mp4" type="video/mp4"/>
-          </video>
-          <div class="cat-symbol">✥</div>
-          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><ellipse cx="50" cy="40" rx="38" ry="16" fill="#E2C268"/></svg>
-          <h2>Vitalisierende Wassersteine</h2>
-          <p>Erwecke die Kraft der Kristalle - für lebendiges und reines Wasser.</p>
-          <button class="cat-btn" type="button" onclick="showPage('wassersteine')">Wassersteine kaufen</button>
-        </article>
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Ritualkerzen wechseln" onclick="showPage('ritualkerzen')">
-          <img class="cat-img" src="DUMMY-LINK-RITUALKERZEN-BILD.jpg" alt="Waldspirit Ritualkerze" />
-          <div class="cat-symbol">⩓</div>
-          <svg class="cat-ornament" viewBox="0 0 100 80" aria-hidden="true" focusable="false"><ellipse cx="50" cy="40" rx="40" ry="18" fill="#E2C268"/></svg>
-          <h2>Magische Ritualkerzen</h2>
-          <p>Handgegossen mit natürlichen Düften, perfekt für Meditation und spirituelle Rituale.</p>
-          <button class="cat-btn" type="button" onclick="showPage('ritualkerzen')">Kerzen entdecken</button>
-        </article>
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Pferde-Heilsteinen wechseln" onclick="showPage('pferdeheilsteine')">
-          <img class="cat-img" src="DUMMY-LINK-PFERDEBUERSTE-BILD.jpg" alt="Heilstein-Pferdebürste" />
-          <div class="cat-symbol">☽</div>
-          <h2>Edelstein-Pferdebürsten</h2>
-          <p>Sanfte Energieübertragung für die Harmonie und Entspannung deines Pferdes.</p>
-          <button class="cat-btn" type="button" onclick="showPage('pferdeheilsteine')">Pferdebürsten ansehen</button>
-        </article>
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zu den Kartenlegekursen wechseln" onclick="showPage('kurse')">
-          <img class="cat-img" src="DUMMY-LINK-KARTENKURS-BILD.jpg" alt="Kartenlegekurs Online" />
-          <div class="cat-symbol">🃏</div>
-          <svg class="cat-ornament" viewBox="0 0 95 80" aria-hidden="true" focusable="false"><rect x="16" y="22" width="59" height="38" rx="6" fill="#E2C268"/></svg>
-          <h2>Kartenlege-Kurse</h2>
-          <p>Praxisnahe Ausbildung mit Zertifikat - lerne Kartenlegen und Spirituelle Techniken online & live.</p>
-          <button class="cat-btn" type="button" onclick="showPage('kurse')">Kurs buchen</button>
-        </article>
-        <article class="cat-card" tabindex="0" role="button" aria-label="Zur spirituellen Beratung wechseln" onclick="showPage('beratung')">
-          <img class="cat-img" src="DUMMY-LINK-BERATUNG-BILD.jpg" alt="Spirituelle Beratung und Kartenlegen" />
-          <div class="cat-symbol">🌙</div>
-          <svg class="cat-ornament" viewBox="0 0 90 80" aria-hidden="true" focusable="false"><ellipse cx="51" cy="40" rx="37" ry="19" fill="#E2C268"/></svg>
-          <h2>Spirituelle Beratung</h2>
-          <p>Intuitive Kartenlegung, Energiearbeit und Lebenshilfe – persönlich, empathisch und individuell.</p>
-          <button class="cat-btn" type="button" onclick="showPage('beratung')">Zur Beratung</button>
-        </article>
-      </section>
-    </section>
+  <section class="category-banner" aria-label="Kategorienübersicht als Banner">
+    <div class="container">
+      <a href="#heilsteine" class="category-button" role="button" tabindex="0" aria-label="Heilsteine Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Mandala-Icon: Ersetze durch dein SVG -->
+          <circle cx="32" cy="32" r="30" stroke="gold" stroke-width="2" fill="none"/>
+          <path d="M32 2 L32 62 M2 32 L62 32 M10 10 L54 54 M54 10 L10 54" stroke="gold" stroke-width="1" />
+        </svg>
+        Heilsteine
+      </a>
+      <a href="#amulette" class="category-button" role="button" tabindex="0" aria-label="Amulette und Ketten Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Schmuck-Icon -->
+          <ellipse cx="32" cy="32" rx="28" ry="15" stroke="gold" stroke-width="2" fill="none"/>
+          <circle cx="32" cy="32" r="10" stroke="gold" stroke-width="1.5" fill="none"/>
+        </svg>
+        Amulette & Ketten
+      </a>
+      <a href="#wassersteine" class="category-button" role="button" tabindex="0" aria-label="Wassersteine Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Tropfen-Icon -->
+          <path d="M32 2 C20 20, 20 44, 32 62 C44 44, 44 20, 32 2 Z" stroke="gold" stroke-width="2" fill="none"/>
+        </svg>
+        Wassersteine
+      </a>
+      <a href="#ritualkerzen" class="category-button" role="button" tabindex="0" aria-label="Ritualkerzen Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Kerzenflamme -->
+          <path d="M32 10 Q30 22, 34 30 Q28 38, 32 54 Q36 38, 30 30 Q34 22, 32 10 Z" stroke="gold" stroke-width="2" fill="none"/>
+        </svg>
+        Ritualkerzen
+      </a>
+      <a href="#pferdeheilsteine" class="category-button" role="button" tabindex="0" aria-label="Pferde-Heilsteine Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Hufeisen-Icon -->
+          <path d="M20 50 A12 20 0 0 1 44 50" stroke="gold" stroke-width="3" fill="none"/>
+          <line x1="20" y1="50" x2="18" y2="54" stroke="gold" stroke-width="2"/>
+          <line x1="44" y1="50" x2="46" y2="54" stroke="gold" stroke-width="2"/>
+        </svg>
+        Pferde-Heilsteine
+      </a>
+      <a href="#kurse" class="category-button" role="button" tabindex="0" aria-label="Kartenlegekurse Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Karten-Icon -->
+          <rect x="15" y="12" width="34" height="40" rx="4" ry="4" stroke="gold" stroke-width="2" fill="none" />
+          <circle cx="32" cy="32" r="8" stroke="gold" stroke-width="1.5" fill="none" />
+        </svg>
+        Kartenlegekurse
+      </a>
+      <a href="#beratung" class="category-button" role="button" tabindex="0" aria-label="Spirituelle Beratung Kategorie aufrufen">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64" width="36" height="36">
+          <!-- Beispiel Mond-Icon -->
+          <path d="M40 12 A18 24 0 1 1 20 52 A14 20 0 1 0 40 12 Z" stroke="gold" stroke-width="2" fill="none"/>
+        </svg>
+        Spirituelle Beratung
+      </a>
+    </div>
+  </section>
 
     <!-- Beratung -->
     <section id="beratung" class="page" tabindex="0" aria-label="Spirituelle Beratung und Kartenlegen">
@@ -537,5 +582,6 @@
   </script>
 </body>
 </html>
+
 
 
