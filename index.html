@@ -110,13 +110,21 @@
     }
     /* Hero style */
     .hero {
-      background: radial-gradient(ellipse 60% 55% at 46% 13%, #e2c2680c 0 90%, transparent 100%),
-                  linear-gradient(130deg,#262012be 0 50%, #18181c 100%);
-      border-radius: 20px; text-align: center; position: relative;
-      box-shadow: 0 3px 44px #16140e90, 0 1px 0 0 var(--gold) inset;
-      color: var(--fg); min-height: 22vh; border:1.5px solid #78672944;
-      margin-bottom: 3em;
-      padding: 5em 2vw 3em 2vw;
+        background-image:
+          url('images/dark-mystic-bg.jpg')
+          radial-gradient(ellipse 60% 55% at 46% 13%, #e2c2680c 0 90%, transparent 100%),
+          linear-gradient(130deg,#262012be 0 50%, #18181c 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 3px 44px #16140e90, 0 1px 0 0 var(--gold) inset;
+        color: var(--fg);
+        min-height: 22vh;
+        margin-bottom: 3em;
+        padding: 5em 2vw 3em 2vw;
     }
     .hero h1 {
       font-family: 'Cinzel Decorative', serif;
@@ -529,3 +537,4 @@
   </script>
 </body>
 </html>
+
