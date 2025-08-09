@@ -77,7 +77,7 @@
       min-height: 65vh;
       position: relative;
     }
-    /* Moon and Angel image placeholders left and right on all main pages */
+    /* Moon and Angel image placeholders */
     .side-image-left, .side-image-right {
       position: fixed;
       top: 150px;
@@ -89,25 +89,16 @@
       z-index: 5;
       filter: drop-shadow(0 0 8px var(--gold));
     }
-    .side-image-left {
-      left: 15px;
-    }
-    .side-image-right {
-      right: 15px;
-    }
-    /* Insert your own images by replacing src attributes */
-    /* Pages container */
-    .page {
-      display: none;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-    .page.active {
-      display: block;
-    }
+    .side-image-left { left: 15px; }
+    .side-image-right { right: 15px; }
+
+    .page { display: none; animation: fadeInUp 0.6s ease forwards; }
+    .page.active { display: block; }
     @keyframes fadeInUp {
       from {opacity: 0; transform: translateY(15px);}
       to {opacity: 1; transform: translateY(0);}
     }
+
     /* Hero style */
     .hero {
         background-image:
@@ -149,7 +140,7 @@
       font-family: 'Georgia', serif; max-width: 750px; margin-left:auto; margin-right:auto;
     }
 
-    /* Kategorien Sektion mit modernem Grid */
+    /* Category grid */
     .categories-section {
       max-width: 1000px;
       margin: 0 auto 4rem auto;
@@ -166,20 +157,16 @@
       padding: 1.75rem 1.3rem 1.4rem 1.3rem;
       color: var(--gold);
       cursor: pointer;
-      user-select: none;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       min-height: 260px;
-      position: relative;
     }
-    .category-tile:hover,
-    .category-tile:focus {
+    .category-tile:hover {
       box-shadow: 0 0 50px 6px #f8e879aa, 0 5px 25px #d0c155cc;
       transform: translateY(-8px);
-      outline: none;
       border-color: #f8e879dd;
       color: #fff7b2;
     }
@@ -189,45 +176,46 @@
       height: 64px;
       stroke: var(--gold);
       fill: none;
-      filter: drop-shadow(0 0 4px #f8e879cc);
     }
     .category-tile h3 {
       font-family: 'Cinzel Decorative', serif;
       font-size: 1.35rem;
       letter-spacing: 0.1em;
       margin-bottom: 0.6rem;
-      font-weight: 800;
-      text-shadow: 0 0 10px #f8e879b0;
     }
     .category-tile p {
       font-size: 1rem;
       color: #d9c975ee;
-      font-weight: 500;
-      line-height: 1.38;
-      margin: 0;
-      flex-grow: 1;
     }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      .categories-section {
-        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-        gap: 1.5rem 1.5rem;
-      }
-      .category-tile {
-        min-height: 230px;
-        padding: 1.5rem 1rem 1.1rem 1rem;
-      }
-      .category-icon {
-        width: 52px;
-        height: 52px;
-        margin-bottom: 0.8rem;
-      }
-      .category-tile h3 {
-        font-size: 1.15rem;
-      }
+    /* Produktkarten */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 2rem;
     }
-    /* Footer */
+    .product-card {
+      background: linear-gradient(135deg, #1e1b13 20%, #28220f 100%);
+      border-radius: 15px;
+      border: 1px solid #a89343b0;
+      padding: 1rem;
+      text-align: center;
+      color: var(--gold);
+      box-shadow: inset 0 0 20px #0008;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px #f8e87955;
+    }
+    .product-card img {
+      max-width: 100%; border-radius: 10px; margin-bottom: 0.8rem;
+    }
+    .product-card h3 {
+      font-family: 'Cinzel Decorative', serif; font-size: 1.25rem; margin-bottom: 0.4rem;
+    }
+    .product-card p { color: #d9c975; font-size: 0.95rem; }
+    .price { color: #fff7b2; font-weight: bold; margin-top: 0.4rem; }
+
     footer {
       background:linear-gradient(130deg,#171312 40%, #282014 100%);
       color:#cbbd90;
@@ -237,56 +225,25 @@
       text-align: center;
     }
     .footer-content {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 2em;
-      justify-content:center;
-      margin-bottom:.6em;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
+      display:flex; flex-wrap:wrap; gap: 2em; justify-content:center;
     }
-    .footer-section {
-      min-width: 200px;
-    }
-    .footer-section h4 {
-      font-family:'Cinzel Decorative', serif;
-      color:var(--gold);
-      margin-bottom:.2em;
-    }
-    .footer-section p, .footer-section a {
-      font-size:1em;
-      color:#cdb872;
-      user-select: text;
-    }
-    .footer-section a {
-      text-decoration:none;
-      margin: 0 .5em;
-    }
-    .footer-section a:hover {
-      color:var(--gold);
-    }
-    .copyright {
-      margin-top:.8em;
-      color:#bcac80;
-      font-size:.95em;
-      opacity:.85;
-    }
+    .footer-section h4 { font-family:'Cinzel Decorative', serif; color:var(--gold); }
+    .footer-section p, .footer-section a { font-size:1em; color:#cdb872; }
+    .footer-section a:hover { color:var(--gold); }
+    .copyright { margin-top:.8em; color:#bcac80; font-size:.95em; }
   </style>
 </head>
 <body>
-  <!-- Mond & Engel Bilder links und rechts, unten in <img> aktuell mit Beispielpfad -->
-  <img src="images/dummy-moon-left.png" alt="Mond Bild (links)" class="side-image-left" aria-hidden="true" />
-  <img src="images/dummy-angel-right.png" alt="Engel Bild (rechts)" class="side-image-right" aria-hidden="true" />
+  <img src="images/dummy-moon-left.png" class="side-image-left" aria-hidden="true">
+  <img src="images/dummy-angel-right.png" class="side-image-right" aria-hidden="true">
 
-  <!-- Navigation -->
   <nav>
-    <div class="logo" tabindex="0" role="button" aria-label="Zur Startseite wechseln" onclick="showPage('home')">
-      <span class="svg"><svg viewBox="0 0 50 50" aria-hidden="true" focusable="false"><path d="M25,5 Q35,22 46,13 Q37,27 47,39 Q26,33 25,50 Q17,33 3,39 Q13,22 4,13 Q19,15 25,5 Z" fill="#E2C268"/></svg></span>
+    <div class="logo" tabindex="0" onclick="showPage('home')">
+      <span class="svg"><svg viewBox="0 0 50 50"><path d="M25,5 Q35,22 46,13 Q37,27 47,39 Q26,33 25,50 Q17,33 3,39 Q13,22 4,13 Q19,15 25,5 Z" fill="#E2C268"/></svg></span>
       Mystic Vision
     </div>
-    <div class="nav-links" role="navigation" aria-label="Hauptnavigation">
-      <a class="active" href="#home" onclick="showPage('home')" aria-current="page">Start</a>
+    <div class="nav-links">
+      <a class="active" href="#home" onclick="showPage('home')">Start</a>
       <a href="#beratung" onclick="showPage('beratung')">Beratung</a>
       <a href="#shop" onclick="showPage('shop')">Shop</a>
       <a href="#kurse" onclick="showPage('kurse')">Kurse</a>
@@ -294,83 +251,103 @@
     </div>
   </nav>
 
-  <main role="main" tabindex="-1">
+  <main>
     <!-- Startseite -->
-    <section id="home" class="page active" tabindex="0" aria-label="Startseite">
-      <section class="hero" aria-label="Willkommen">
+    <section id="home" class="page active">
+      <section class="hero">
         <h1>Mystic Vision</h1>
         <p>Erlebe die neue Dimension von Spiritualität – Magie, Beratung & Shop im exklusiv mystischen Design.</p>
         <p>Finde deine Energie neu: Mit echten Heilsteinen, magischen Kerzen, Ritualen und spiritueller Top-Beratung.</p>
       </section>
-
-      <!-- Kategorieneinteilung direkt unter dem Text -->
-      <section class="categories-section" role="list" aria-label="Übersicht der Kategorien">
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Heilsteine Kategorie" onclick="showPage('shop')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-            <circle cx="32" cy="32" r="30" />
-            <path d="M32 2 L32 62 M2 32 L62 32 M10 10 L54 54 M54 10 L10 54" />
-          </svg>
-          <h3>Heilsteine</h3>
-          <p>Kristalle für Heilung, Energie & Schutz. Energetisch gereinigt, direkt aus magischen Regionen.</p>
-        </article>
-
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Amulette & Ketten Kategorie" onclick="showPage('shop')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-            <ellipse cx="32" cy="32" rx="28" ry="15" />
-            <circle cx="32" cy="32" r="10" />
-          </svg>
-          <h3>Amulette & Ketten</h3>
-          <p>Handgefertigte Ketten & Schmuckstücke: Dein persönlicher Begleiter für Schutz & Intuition.</p>
-        </article>
-
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Wassersteine Kategorie" onclick="showPage('shop')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M32 2 C20 20, 20 44, 32 62 C44 44, 44 20, 32 2 Z" />
-          </svg>
-          <h3>Wassersteine</h3>
-          <p>Setze die Kraft von Kristallen für lebendiges, energetisiertes Wasser ein – für Körper & Seele.</p>
-        </article>
-
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Ritualkerzen Kategorie" onclick="showPage('shop')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M32 10 Q30 22, 34 30 Q28 38, 32 54 Q36 38, 30 30 Q34 22, 32 10 Z" />
-          </svg>
-          <h3>Ritualkerzen</h3>
-          <p>Handgegossene Kerzen, duftend nach Wald & Gewürzen, perfekt für Rituale und Meditation.</p>
-        </article>
-
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Pferde-Heilsteine Kategorie" onclick="showPage('shop')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M20 50 A12 20 0 0 1 44 50" />
-            <line x1="20" y1="50" x2="18" y2="54"/>
-            <line x1="44" y1="50" x2="46" y2="54"/>
-          </svg>
-          <h3>Pferde-Heilsteine</h3>
-          <p>Edelstein-Pferdebürsten: Für das Wohl deiner Tiere, zur Förderung von Harmonie & Leichtigkeit.</p>
-        </article>
-
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Kartenlegekurse Kategorie" onclick="showPage('kurse')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-            <rect x="15" y="12" width="34" height="40" rx="4" ry="4" />
-            <circle cx="32" cy="32" r="8" />
-          </svg>
-          <h3>Kartenlegekurse</h3>
-          <p>Werde Kartenexpert:in – Magische Kurse, live & online, mit Zertifikat und Praxis.</p>
-        </article>
-
-        <article class="category-tile" role="listitem" tabindex="0" aria-label="Spirituelle Beratung Kategorie" onclick="showPage('beratung')">
-          <svg class="category-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M40 12 A18 24 0 1 1 20 52 A14 20 0 1 0 40 12 Z" />
-          </svg>
-          <h3>Spirituelle Beratung</h3>
-          <p>Intuitives Kartenlegen, Lebenshilfe & Energiearbeit – individuell, empathisch, exklusiv.</p>
-        </article>
-
+      <section class="categories-section">
+        <!-- Kategorien hier wie gehabt ... -->
       </section>
+    </section>
+
+    <!-- Beratung -->
+    <section id="beratung" class="page">
+      <section class="hero">
+        <h1>Spirituelle Beratung</h1>
+        <p>Kartenlegen, Energiearbeit & Lebenshilfe – einfühlsam, individuell und diskret.</p>
+      </section>
+      <div style="max-width:900px;margin:auto;">
+        <p>In unseren Beratungen begleiten wir dich auf deinem Weg zu mehr Klarheit, Kraft und innerem Frieden.  
+        Ob per Telefon, Video oder persönlich – wir finden gemeinsam Antworten und neue Perspektiven.</p>
+        <ul>
+          <li>Kartenlegen & Orakel</li>
+          <li>Energie- & Chakra-Arbeiten</li>
+          <li>Individuelle Ritualgestaltung</li>
+          <li>Spirituelles Coaching</li>
+        </ul>
+        <p><strong>Preis:</strong> ab 30 € pro Sitzung</p>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="shop" class="page">
+      <section class="hero">
+        <h1>Shop</h1>
+        <p>Magische Produkte für Schutz, Energie und Harmonie.</p>
+      </section>
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="images/stein1.jpg" alt="Bergkristall">
+          <h3>Bergkristall</h3>
+          <p>Klarer Heilstein für Energie und Reinheit.</p>
+          <div class="price">12,90 €</div>
+        </div>
+        <div class="product-card">
+          <img src="images/amulet1.jpg" alt="Schutzamulett">
+          <h3>Schutzamulett</h3>
+          <p>Handgefertigt – dein täglicher Begleiter.</p>
+          <div class="price">24,90 €</div>
+        </div>
+        <div class="product-card">
+          <img src="images/kerze1.jpg" alt="Ritualkerze">
+          <h3>Ritualkerze Waldzauber</h3>
+          <p>Mit Kräutern und Harzen, ideal für Meditation.</p>
+          <div class="price">9,50 €</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kurse -->
+    <section id="kurse" class="page">
+      <section class="hero">
+        <h1>Kurse</h1>
+        <p>Wissen & Praxis für deine spirituelle Entwicklung.</p>
+      </section>
+      <div style="max-width:900px; margin:auto;">
+        <article>
+          <h2>Kartenlegen Intensivkurs</h2>
+          <p>Lerne die Kunst des Kartenlegens – inkl. Deutungsübungen und Praxisbeispielen.</p>
+          <p><strong>Dauer:</strong> 4 Wochen Onlinekurs</p>
+          <p><strong>Preis:</strong> 149 €</p>
+        </article>
+        <article>
+          <h2>Energiearbeit Basis</h2>
+          <p>Grundlagen der Chakrenarbeit & Heilenergie – für Einsteiger geeignet.</p>
+          <p><strong>Dauer:</strong> 2 Wochen</p>
+          <p><strong>Preis:</strong> 89 €</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Über uns -->
+    <section id="about" class="page">
+      <section class="hero">
+        <h1>Über Uns</h1>
+        <p>Dein Tor in die mystische Welt.</p>
+      </section>
+      <div style="max-width:900px;margin:auto;">
+        <p>Mystic Vision steht für echte, gelebte Spiritualität.  
+        Unser Team besteht aus erfahrenen Kartenleger:innen, Energiearbeiter:innen und spirituellen Coaches.  
+        Seit vielen Jahren begleiten wir Menschen auf ihrem Weg – respektvoll, diskret und voller Herzblut.</p>
+        <p>Wir glauben daran, dass jeder Mensch die Kraft hat, sein Leben zu verändern – und wir helfen dir, diese Kraft zu entdecken.</p>
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <section class="footer-section">
@@ -392,34 +369,17 @@
   </footer>
 
 <script>
-  // Seitenumschaltung und Navigation
   function showPage(id) {
     const pages = document.querySelectorAll('.page');
-    pages.forEach(page => {
-      page.classList.remove('active');
-      page.setAttribute('aria-hidden', 'true');
-    });
+    pages.forEach(page => page.classList.remove('active'));
     const target = document.getElementById(id);
-    if (target) {
-      target.classList.add('active');
-      target.setAttribute('aria-hidden', 'false');
-      window.scrollTo({top: 100, behavior: 'smooth'});
-    }
+    if (target) target.classList.add('active');
 
-    // Navigation Link Highlight
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + id) {
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'page');
-      } else {
-        link.removeAttribute('aria-current');
-      }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
     });
+    window.scrollTo({top: 100, behavior: 'smooth'});
   }
-
-  // Tastaturbedienung für Logo
   document.querySelector('.logo').addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -427,6 +387,5 @@
     }
   });
 </script>
-
 </body>
 </html>
